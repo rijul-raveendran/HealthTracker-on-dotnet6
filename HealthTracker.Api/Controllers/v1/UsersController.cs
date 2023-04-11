@@ -8,16 +8,11 @@ using HealthTracker.DataService.IConfiguration;
 
 namespace HealthTracker.Api.Controllers.v1
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
-    [ApiController]
-    [ApiVersion("1.0")]
-    public class UsersController : ControllerBase
-    {
-        private IUnitOfWork _unitOfWork;
-        public UsersController(IUnitOfWork unitOfwork)
-        {
 
-            _unitOfWork = unitOfwork;
+    public class UsersController : BaseController
+    {
+        public UsersController(IUnitOfWork unitOfwork) : base(unitOfwork)
+        {
         }
 
 
