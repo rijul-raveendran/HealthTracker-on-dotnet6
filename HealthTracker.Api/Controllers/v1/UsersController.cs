@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using HealthTracker.DataService.IConfiguration;
 
-namespace HealthTracker.Api.Controllers
+namespace HealthTracker.Api.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class UsersController : ControllerBase
     {
         private IUnitOfWork _unitOfWork;
@@ -47,7 +48,7 @@ namespace HealthTracker.Api.Controllers
             await _unitOfWork.CompleteAsync();
 
             return CreatedAtRoute("GetUser", new { id = _user.Id }, user);
-    
+
 
         }
 

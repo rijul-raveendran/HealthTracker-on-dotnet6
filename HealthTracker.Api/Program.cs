@@ -1,6 +1,7 @@
 using HealthTracker.DataService.Data;
 using HealthTracker.DataService.DataService;
 using HealthTracker.DataService.IConfiguration;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddApiVersioning(options =>
+{
+    // reports to the client different APi versions we use
+    options.ReportApiVersions = true;
+    // default version if not specified
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    // default version
+    options.DefaultApiVersion = ApiVersion.Default;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
