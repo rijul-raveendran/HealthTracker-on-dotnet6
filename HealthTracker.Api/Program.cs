@@ -1,4 +1,4 @@
-using HealthTracker.Api.Configuration.Models;
+using HealthTracker.Authentication.Configuration;
 using HealthTracker.DataService.Data;
 using HealthTracker.DataService.DataService;
 using HealthTracker.DataService.IConfiguration;
